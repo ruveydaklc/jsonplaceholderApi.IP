@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userFragment">
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.example.internshipproject.ui.component.photos.PhotoFragment"
+        android:label="fragment_posts"
+        tools:layout="@layout/fragment_photos" >
+        <action
+            android:id="@+id/action_postsFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.internshipproject.ui.component.users.UserFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_userFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.internshipproject.ui.component.detail.PhotoDetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_photo_detail" >
+        <argument
+            android:name="photoObj"
+            app:argType="com.example.internshipproject.api.data.Photo" />
+    </fragment>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/loginActivity">
+        <activity
+            android:id="@+id/loginActivity"
+            android:name="com.example.internshipproject.ui.base.LoginActivity"
+            android:label="activity_login"
+            tools:layout="@layout/activity_login" />
+        <action
+            android:id="@+id/action_global_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_global_postsFragment"
+            app:destination="@id/postsFragment" />
+    </navigation>
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.example.internshipproject.ui.component.detail.UserDetailFragment"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_user_detail" >
+        <argument android:name="userObj"
+            app:argType="com.example.internshipproject.api.data.User" />
+    </fragment>
+</navigation>
