@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.users
+package com.example.internshipproject.view.ui.component.users
 
 import android.annotation.SuppressLint
 import android.widget.TextView

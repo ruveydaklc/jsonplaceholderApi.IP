@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.photos
+package com.example.internshipproject.view.ui.component.photos
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
@@ -7,19 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.internshipproject.api.network.RetrofitApiService
 import com.example.internshipproject.api.repo.Repository
 import com.example.internshipproject.databinding.FragmentPhotosBinding
-import com.example.internshipproject.ui.viewmodel.PhotoViewModel
-import com.example.internshipproject.ui.viewmodel.ViewModelFactory
+import com.example.internshipproject.view.adapter.PhotoAdapter
+import com.example.internshipproject.view.ui.viewmodel.PhotoViewModel
+import com.example.internshipproject.view.ui.viewmodel.ViewModelFactory
 
 class PhotoFragment : Fragment() {
 
     private lateinit var photoViewModel: PhotoViewModel
     private lateinit var binding: FragmentPhotosBinding
-    private var photoAdapter=PhotoAdapter()
+    private var photoAdapter= PhotoAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +33,6 @@ class PhotoFragment : Fragment() {
 
         return binding.root
     }
-
-   /* override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
-        // TODO: Use the ViewModel
-    }*/
 
 
     private fun initRecyclerView() {
@@ -81,5 +75,11 @@ class PhotoFragment : Fragment() {
 
         }
     }
+   /* override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        photoViewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
+
+    }*/
+
 
 }

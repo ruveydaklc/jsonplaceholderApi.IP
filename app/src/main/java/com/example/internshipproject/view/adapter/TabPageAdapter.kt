@@ -1,4 +1,4 @@
-package com.example.internshipproject
+package com.example.internshipproject.view.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

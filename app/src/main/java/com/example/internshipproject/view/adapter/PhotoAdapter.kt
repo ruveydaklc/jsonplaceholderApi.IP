@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.photos
+package com.example.internshipproject.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipproject.api.data.Photo
 import com.example.internshipproject.databinding.PhotoCardBinding
+import com.example.internshipproject.view.ui.component.photos.PhotoFragmentDirections
+import com.example.internshipproject.view.ui.component.photos.PhotoViewHolder
 
 class PhotoAdapter:RecyclerView.Adapter<PhotoViewHolder>() {
 
@@ -21,7 +23,8 @@ class PhotoAdapter:RecyclerView.Adapter<PhotoViewHolder>() {
 
 
         holder.itemView.setOnClickListener { view ->
-            val actionss= PhotoFragmentDirections.actionPostsFragmentToDetailFragment(listPhotos[position])
+            val actionss=
+                PhotoFragmentDirections.actionPostsFragmentToDetailFragment(listPhotos[position])
             view.findNavController().navigate(actionss)
 
         }

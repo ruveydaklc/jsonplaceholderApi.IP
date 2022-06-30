@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.users
+package com.example.internshipproject.view.ui.component.users
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.*
 import com.example.internshipproject.api.network.RetrofitApiService
 import com.example.internshipproject.api.repo.Repository
 import com.example.internshipproject.databinding.FragmentUsersBinding
-import com.example.internshipproject.ui.viewmodel.UserViewModel
-import com.example.internshipproject.ui.viewmodel.ViewModelFactory
+import com.example.internshipproject.view.adapter.UserAdapter
+import com.example.internshipproject.view.ui.viewmodel.UserViewModel
+import com.example.internshipproject.view.ui.viewmodel.ViewModelFactory
 
 class UserFragment : Fragment()
 {
 
     private lateinit var binding: FragmentUsersBinding
-    private  var userAdapter=UserAdapter()
+    private  var userAdapter= UserAdapter()
     lateinit var  userViewModel: UserViewModel
 
 

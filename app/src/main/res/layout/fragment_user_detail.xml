@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.component.detail.UserDetailFragment">
+    tools:context=".view.ui.component.detail.UserDetailFragment">
 
     <TextView
         android:id="@+id/tvDescriptionUD"

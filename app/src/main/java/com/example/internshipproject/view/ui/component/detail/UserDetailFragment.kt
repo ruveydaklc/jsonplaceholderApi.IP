@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.detail
+package com.example.internshipproject.view.ui.component.detail
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.example.internshipproject.api.data.User
 import com.example.internshipproject.databinding.FragmentUserDetailBinding
-import com.example.internshipproject.ui.viewmodel.UserDetailViewModel
-import com.example.internshipproject.ui.viewmodel.ViewModelFactory
-import com.squareup.picasso.Picasso
+import com.example.internshipproject.view.ui.viewmodel.UserDetailViewModel
+import com.example.internshipproject.view.ui.viewmodel.ViewModelFactory
 
 class UserDetailFragment : Fragment() {
 
@@ -27,34 +27,35 @@ class UserDetailFragment : Fragment() {
         binding= FragmentUserDetailBinding.inflate(layoutInflater,container,false)
 
         initViewModel()
-        initArgs()
+        observeLiveData()
+        getUserData(bundle.userObj)
 
         return binding.root
     }
 
-    private fun initViewModel(){
-
-        //val retrofitService= RetrofitApiService.getInstance()
-        //val repo = Repository(retrofitService)
-
-        userDetailViewModel=ViewModelProvider(this, ViewModelFactory()).get(UserDetailViewModel::class.java)
-
+    private fun getUserData(user: User) {
+        userDetailViewModel.initData(user)
     }
+
+    @SuppressLint("FragmentLiveDataObserve")
+    private fun observeLiveData() {
+        userDetailViewModel.userLiveData.observe(this@UserDetailFragment){
+            initArgs(it)
+        }
+    }
+
+    private fun initViewModel(){
+        userDetailViewModel=ViewModelProvider(this, ViewModelFactory()).get(UserDetailViewModel::class.java)
+    }
+
 
     @SuppressLint("SetTextI18n")
-    private fun initArgs() {
-        val obj =bundle.userObj
+    private fun initArgs(obj:User) {
         binding.apply {
-            tvDescriptionUD.text= obj.username + "\n"+ obj.name+ "\n"+  obj.email + "\n"+ obj.website  + "\n"+ obj.address + "\n"+ obj.phone
+            tvDescriptionUD.text=  obj.name+ "\n"+ obj.username + "\n"+ obj.email + "\n"+ obj.website  + "\n"+ obj.address + "\n"+ obj.phone
         }
-
-
     }
 
-   /* override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        userDetailViewModel = ViewModelProvider(this).get(UserDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }*/
+
 
 }

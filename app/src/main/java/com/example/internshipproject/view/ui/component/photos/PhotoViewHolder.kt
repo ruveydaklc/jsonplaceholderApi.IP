@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.component.photos
+package com.example.internshipproject.view.ui.component.photos
 
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView

@@ -14,12 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InternshipProject"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.base.LoginActivity"
+            android:name="com.example.internshipproject.view.ui.base.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.base.MainActivity"
+            android:name="com.example.internshipproject.view.ui.base.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

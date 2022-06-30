@@ -1,4 +1,4 @@
-package com.example.internshipproject.ui.viewmodel
+package com.example.internshipproject.view.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import com.example.internshipproject.api.data.Photo
 import com.example.internshipproject.api.repo.Repository
 import kotlinx.coroutines.*
 
-class PhotoViewModel  constructor(private val repo: Repository)  : ViewModel() {
+class PhotoViewModel  (private val repo: Repository)  : ViewModel() {
     val photoListLiveData= MutableLiveData<List<Photo>>()
 
     val errorMsg= MutableLiveData<String>()
