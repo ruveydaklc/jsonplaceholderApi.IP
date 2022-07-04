@@ -13,10 +13,8 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
-
     lateinit var navHostFragment : NavHostFragment
     private lateinit var tab:TabLayoutBinding
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-
 
         //adding tabs
         binding.tabLayout.addTab(binding.tabLayout.newTab())
@@ -71,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }
 

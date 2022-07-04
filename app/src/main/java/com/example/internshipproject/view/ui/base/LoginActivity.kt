@@ -18,24 +18,22 @@ class LoginActivity : AppCompatActivity() {
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val sampUserName:String = "user"
         val sampPassword:String= "1111"
 
         binding.btnLogIn.setOnClickListener{
             if (binding.etUserName.text.toString() == sampUserName && binding.etPassword.text.toString() == sampPassword){
                 Toast.makeText(this,"Login successfully.", Toast.LENGTH_SHORT).show()
-                var intent= Intent(this,MainActivity::class.java)
+                val intent= Intent(this,MainActivity::class.java)
                 resultLauncher.launch(intent)
             }
             else{
-                AlertWarning()
+                alertWarning()
             }
         }
-
     }
 
-    fun AlertWarning(){
+    private fun alertWarning(){
         val adb: AlertDialog.Builder= AlertDialog.Builder(this)
         adb.setTitle("Login Error!")
         adb.setMessage("Your username and password do not match. Try again.")
@@ -49,6 +47,5 @@ class LoginActivity : AppCompatActivity() {
         {
             Toast.makeText(this, "Please login again.", Toast.LENGTH_SHORT).show()
         }
-
     }
 }

@@ -10,22 +10,12 @@ import com.example.internshipproject.databinding.UserCardBinding
 
 class UserViewHolder(binding: UserCardBinding):RecyclerView.ViewHolder(binding.root) {
 
-    val name:TextView
-    val sName:TextView
-    val email:TextView
-
-    init {
-        name=itemView.findViewById(R.id.tvNameC)
-        sName=itemView.findViewById(R.id.tvSurnameC)
-        email=itemView.findViewById(R.id.tvEmailC)
-
-
-
-    }
+    val name:TextView = itemView.findViewById(R.id.tvNameC)
+    private val sName:TextView = itemView.findViewById(R.id.tvSurnameC)
+    private val email:TextView = itemView.findViewById(R.id.tvEmailC)
 
     @SuppressLint("SetTextI18n")
     fun bindData(user : User){
-
         name.text  = "Name     : ${user.name}"
         sName.text = "Username : ${user.username}"
         email.text = "Email    : ${user.email}"
@@ -34,8 +24,6 @@ class UserViewHolder(binding: UserCardBinding):RecyclerView.ViewHolder(binding.r
             val action=UserFragmentDirections.actionUserFragmentToDetailFragment(user.id)
             view.findNavController().navigate(action)
         }*/
-
-
     }
 }
 

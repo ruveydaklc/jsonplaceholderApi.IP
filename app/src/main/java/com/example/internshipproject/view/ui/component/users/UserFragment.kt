@@ -26,9 +26,8 @@ class UserFragment : Fragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding= FragmentUsersBinding.inflate(inflater,container,false)
-
 
         initViewModel()
         getUsers()
@@ -49,13 +48,11 @@ class UserFragment : Fragment()
         val retrofitService= RetrofitApiService.getInstance()
         val userRepo = Repository(retrofitService)
 
-        userViewModel=ViewModelProvider(this, ViewModelFactory(userRepo)).get(UserViewModel::class.java)
-
+        userViewModel= ViewModelProvider(this, ViewModelFactory(userRepo))[UserViewModel::class.java]
     }
 
     @SuppressLint("FragmentLiveDataObserve")
     private fun getUsers(){
-
         userViewModel.userListLiveData.observe(this){
             userAdapter.setUsers(it)
         }
@@ -63,23 +60,13 @@ class UserFragment : Fragment()
             errorMsg.observe(this@UserFragment){
             }
             loading.observe(this@UserFragment) {
-                    if (it) {
-                        binding.progressDialog.visibility = View.VISIBLE
-                    } else {
-                        binding.progressDialog.visibility = View.GONE
-                    }
+                if (it) {
+                    binding.progressDialog.visibility = View.VISIBLE
+                } else {
+                    binding.progressDialog.visibility = View.GONE
                 }
+            }
             getUsers()
         }
     }
-
-   /* override fun clickUser(userId: Int?) {
-        val action=userId.let {
-            UserFragmentDirections.actionUserFragmentToDetailFragment(it)
-        }
-        findNavController().navigate(action)
-    }*/
-
-
-
 }

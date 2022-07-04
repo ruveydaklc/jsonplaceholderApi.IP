@@ -6,22 +6,15 @@ import com.example.internshipproject.api.data.User
 import com.example.internshipproject.api.repo.Repository
 import kotlinx.coroutines.*
 
- class UserViewModel ( val userRepo: Repository) : ViewModel(){
+ class UserViewModel (private val userRepo: Repository) : ViewModel(){
 
-    val userListLiveData= MutableLiveData<List<User>>()
-
-    val errorMsg=MutableLiveData<String>()
-    var handleJob:Job?=null
-
-    val loading =MutableLiveData<Boolean>()
-
-    val exceptionHandler= CoroutineExceptionHandler { _,throwable ->onError(
-        "Exception: ${throwable.localizedMessage}"
-    )
-
-    }
-
-
+     val userListLiveData= MutableLiveData<List<User>>()
+     val errorMsg=MutableLiveData<String>()
+     val loading =MutableLiveData<Boolean>()
+     var handleJob:Job?=null
+     private val exceptionHandler= CoroutineExceptionHandler { _, throwable ->onError(
+        "Exception: ${throwable.localizedMessage}")
+     }
 
     private fun onError(msg:String){
         errorMsg.value=msg
@@ -46,5 +39,4 @@ import kotlinx.coroutines.*
             }
         }
     }
-
-}
+ }

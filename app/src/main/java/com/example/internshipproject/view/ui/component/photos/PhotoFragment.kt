@@ -24,7 +24,7 @@ class PhotoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding=FragmentPhotosBinding.inflate(inflater,container,false)
 
         initViewModel()
@@ -34,12 +34,9 @@ class PhotoFragment : Fragment() {
         return binding.root
     }
 
-
     private fun initRecyclerView() {
-
         binding.rvPost.apply {
             adapter=photoAdapter
-
             layoutManager= StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         }
     }
@@ -47,13 +44,11 @@ class PhotoFragment : Fragment() {
         val retrofitService= RetrofitApiService.getInstance()
         val userRepo = Repository(retrofitService)
 
-        photoViewModel=ViewModelProvider(this, ViewModelFactory(userRepo)).get(PhotoViewModel::class.java)
-
+        photoViewModel= ViewModelProvider(this, ViewModelFactory(userRepo))[PhotoViewModel::class.java]
     }
 
     @SuppressLint("FragmentLiveDataObserve")
     private fun getPhotos(){
-
         photoViewModel.photoListLiveData.observe(this){
             photoAdapter.setPhotos(it)
         }
@@ -66,20 +61,9 @@ class PhotoFragment : Fragment() {
                    binding.progressBar.visibility = View.VISIBLE
                 } else {
                    binding.progressBar.visibility = View.GONE
-
                 }
-
             }
-
             getPhotos()
-
         }
     }
-   /* override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        photoViewModel = ViewModelProvider(this).get(PhotoViewModel::class.java)
-
-    }*/
-
-
 }

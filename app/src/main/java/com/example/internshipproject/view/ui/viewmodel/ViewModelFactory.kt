@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.internshipproject.api.repo.Repository
 
-class ViewModelFactory (val repo: Repository?=null):ViewModelProvider.Factory {
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory (private val repo: Repository?=null):ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
         return if (modelClass.isAssignableFrom(UserViewModel::class.java))
@@ -24,6 +25,4 @@ class ViewModelFactory (val repo: Repository?=null):ViewModelProvider.Factory {
             throw IllegalAccessException("!!View Model Not Found")
         }
     }
-
-
 }

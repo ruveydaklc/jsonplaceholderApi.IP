@@ -15,6 +15,4 @@ class UserDetailViewModel : ViewModel() {
             userLiveData.postValue(user)
         }
     }
-
-
 }

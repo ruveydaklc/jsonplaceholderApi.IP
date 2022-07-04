@@ -8,7 +8,4 @@ class Repository (private val retrofitApiService: RetrofitApiService) {
     suspend fun getUsers()=retrofitApiService.getUsers()
 
     suspend fun getPhotos()=retrofitApiService.getPhotos()
-
-
-
 }

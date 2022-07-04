@@ -9,31 +9,25 @@ import retrofit2.http.GET
 
 interface RetrofitApiService {
 
-
     @GET("/users")
     suspend fun getUsers(): Response<List<User>>
     @GET("/photos")
     suspend fun getPhotos(): Response<List<Photo>>
 
-    companion object{
-        val BaseURL = "http://jsonplaceholder.typicode.com"
 
+    companion object{
+        private val BaseURL = "http://jsonplaceholder.typicode.com"
         var retrofitApiService:RetrofitApiService?=null
 
-
         fun getInstance():RetrofitApiService{
-
             if (retrofitApiService==null){
                 val retrofit= Retrofit.Builder()
                     .baseUrl(BaseURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitApiService=retrofit.create(RetrofitApiService::class.java)
-
             }
             return retrofitApiService!!
         }
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.example.internshipproject.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -20,23 +21,20 @@ class PhotoAdapter:RecyclerView.Adapter<PhotoViewHolder>() {
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         holder.bindData(listPhotos[position])
-
-
         holder.itemView.setOnClickListener { view ->
-            val actionss=
+            val actions =
                 PhotoFragmentDirections.actionPostsFragmentToDetailFragment(listPhotos[position])
-            view.findNavController().navigate(actionss)
-
+            view.findNavController().navigate(actions)
         }
-
     }
 
     override fun getItemCount(): Int {
         return listPhotos.size
     }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun setPhotos(photos:List<Photo>){
         this.listPhotos=photos.toMutableList()
         notifyDataSetChanged()
     }
-
 }

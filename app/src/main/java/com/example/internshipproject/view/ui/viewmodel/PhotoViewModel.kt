@@ -10,17 +10,13 @@ class PhotoViewModel  (private val repo: Repository)  : ViewModel() {
     val photoListLiveData= MutableLiveData<List<Photo>>()
 
     val errorMsg= MutableLiveData<String>()
-    var handleJob: Job?=null
-
     val loading = MutableLiveData<Boolean>()
 
-    val exceptionHandler= CoroutineExceptionHandler { _,throwable ->onError(
-        "Exception: ${throwable.localizedMessage}"
-    )
+    var handleJob: Job?=null
 
+    private val exceptionHandler= CoroutineExceptionHandler { _, throwable ->onError(
+        "Exception: ${throwable.localizedMessage}")
     }
-
-
 
     private fun onError(msg:String){
         errorMsg.value=msg
@@ -32,22 +28,17 @@ class PhotoViewModel  (private val repo: Repository)  : ViewModel() {
         handleJob?.cancel()
     }
 
-
     fun getPhotos(){
-
-        handleJob= CoroutineScope(Dispatchers.IO+exceptionHandler).launch {
+        handleJob= CoroutineScope(Dispatchers.Main+exceptionHandler).launch {
             val response= repo.getPhotos()
             withContext(Dispatchers.Main){
                 if (response.isSuccessful){
                     photoListLiveData.postValue(response.body())
                     loading.value=false
-
                 }else{
                     onError("Error! ${response.message()}")
                 }
             }
-
         }
-
     }
 }

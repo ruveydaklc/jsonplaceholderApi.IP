@@ -15,6 +15,4 @@ class PhotoDetailViewModel() : ViewModel() {
             photoLiveData.postValue(photo)
         }
     }
-
-
 }

@@ -18,21 +18,17 @@ class PhotoDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentPhotoDetailBinding
     private  var photoDetaiViewModel= PhotoDetailViewModel()
-
-
-    val bundle:PhotoDetailFragmentArgs by navArgs()
+    private val bundle:PhotoDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding= FragmentPhotoDetailBinding.inflate(inflater,container,false)
 
         initViewModel()
-       // initArgs(bundle.photoObj)
         observeLData()
         getPhotoData(bundle.photoObj)
-
 
         return binding.root
     }
@@ -45,32 +41,17 @@ class PhotoDetailFragment : Fragment() {
     private fun observeLData() {
         photoDetaiViewModel.photoLiveData.observe(this@PhotoDetailFragment){
             initArgs(it)
-            }
-
+        }
     }
 
     private fun initViewModel(){
-        photoDetaiViewModel=ViewModelProvider(this, ViewModelFactory()).get(PhotoDetailViewModel::class.java)
+        photoDetaiViewModel= ViewModelProvider(this, ViewModelFactory())[PhotoDetailViewModel::class.java]
     }
 
-
     private fun initArgs(obj:Photo) {
-
         binding.apply {
             Picasso.get().load(obj.url).into(ivPostDetail)
             tvPostDescription.text=obj.title
         }
-
     }
-/*
-    @SuppressLint("FragmentLiveDataObserve")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        photoDetaiViewModel = ViewModelProvider(this).get(PhotoDetailViewModel::class.java)
-
-
-    }*/
-
-
-
 }

@@ -18,12 +18,12 @@ class UserDetailFragment : Fragment() {
     lateinit var binding: FragmentUserDetailBinding
     private lateinit var userDetailViewModel: UserDetailViewModel
 
-    val bundle:UserDetailFragmentArgs by navArgs()
+    private val bundle:UserDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding= FragmentUserDetailBinding.inflate(layoutInflater,container,false)
 
         initViewModel()
@@ -45,9 +45,8 @@ class UserDetailFragment : Fragment() {
     }
 
     private fun initViewModel(){
-        userDetailViewModel=ViewModelProvider(this, ViewModelFactory()).get(UserDetailViewModel::class.java)
+        userDetailViewModel= ViewModelProvider(this, ViewModelFactory())[UserDetailViewModel::class.java]
     }
-
 
     @SuppressLint("SetTextI18n")
     private fun initArgs(obj:User) {
@@ -55,7 +54,4 @@ class UserDetailFragment : Fragment() {
             tvDescriptionUD.text=  obj.name+ "\n"+ obj.username + "\n"+ obj.email + "\n"+ obj.website  + "\n"+ obj.address + "\n"+ obj.phone
         }
     }
-
-
-
 }
