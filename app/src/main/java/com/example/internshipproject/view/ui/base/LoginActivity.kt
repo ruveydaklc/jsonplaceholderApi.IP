@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogIn.setOnClickListener{
             if (binding.etUserName.text.toString() == sampUserName && binding.etPassword.text.toString() == sampPassword){
-                Toast.makeText(this,"Login successful.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Login successfully.", Toast.LENGTH_SHORT).show()
                 var intent= Intent(this,MainActivity::class.java)
                 resultLauncher.launch(intent)
             }

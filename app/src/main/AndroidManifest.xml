@@ -17,10 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.internshipproject.view.ui.base.LoginActivity"
+            android:name="com.example.internshipproject.view.ui.base.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.internshipproject.view.ui.base.MainActivity"
+            android:name="com.example.internshipproject.view.ui.base.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

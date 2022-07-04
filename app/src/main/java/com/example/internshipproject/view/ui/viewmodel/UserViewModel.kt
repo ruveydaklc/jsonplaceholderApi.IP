@@ -6,7 +6,7 @@ import com.example.internshipproject.api.data.User
 import com.example.internshipproject.api.repo.Repository
 import kotlinx.coroutines.*
 
- class UserViewModel constructor( val userRepo: Repository) : ViewModel(){
+ class UserViewModel ( val userRepo: Repository) : ViewModel(){
 
     val userListLiveData= MutableLiveData<List<User>>()
 

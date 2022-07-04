@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.internshipproject.api.repo.Repository
 
-class ViewModelFactory constructor(val repo: Repository?=null):ViewModelProvider.Factory {
+class ViewModelFactory (val repo: Repository?=null):ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
         return if (modelClass.isAssignableFrom(UserViewModel::class.java))
